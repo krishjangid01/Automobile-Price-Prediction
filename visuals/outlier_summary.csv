@@ -1,0 +1,17 @@
+Feature,Outliers
+symboling,0
+normalized-losses,8
+wheel-base,3
+length,1
+width,11
+height,0
+curb-weight,2
+engine-size,10
+bore,0
+stroke,20
+compression-ratio,27
+horsepower,5
+peak-rpm,2
+city-mpg,2
+highway-mpg,3
+price,14
