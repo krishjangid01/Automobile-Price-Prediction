@@ -2,9 +2,11 @@
 
 ## 📌 Project Overview
 
-This project aims to develop a Machine Learning model that predicts the price of automobiles based on various features such as engine size, horsepower, curb weight, fuel type, body style, and other vehicle specifications.
+This project aims to develop a Machine Learning system that predicts the price of automobiles based on various features such as engine size, horsepower, curb weight, fuel type, body style, mileage, and other vehicle specifications.
 
-The project uses Python and popular data science libraries to perform data preprocessing, exploratory data analysis, feature engineering, feature selection, and machine learning model development.
+The project follows a complete machine learning workflow including data preprocessing, exploratory data analysis, feature engineering, categorical encoding, feature selection, model training, model evaluation, and a user-input-based automobile price prediction system.
+
+---
 
 ## 🎯 Objectives
 
@@ -12,9 +14,14 @@ The project uses Python and popular data science libraries to perform data prepr
 - Perform data cleaning and preprocessing.
 - Identify important features affecting automobile prices.
 - Perform feature engineering and categorical encoding.
+- Select relevant features for model development.
 - Build regression models to predict automobile prices.
 - Evaluate and compare different machine learning algorithms.
-- Select the best-performing model for automobile price prediction.
+- Select the best-performing model.
+- Develop a user-input-based automobile price prediction system.
+- Validate the final prediction system using real dataset records.
+
+---
 
 ## 📂 Project Structure
 
@@ -79,6 +86,8 @@ Automobile-Price-Prediction/
 └── .gitignore
 ```
 
+---
+
 ## 📊 Dataset Information
 
 - **Dataset:** Automobile Dataset
@@ -87,6 +96,32 @@ Automobile-Price-Prediction/
 - **Cleaned Records:** 201
 - **Total Columns:** 26
 - **Target Variable:** `price`
+
+The dataset contains automobile specifications including:
+
+- Make
+- Fuel type
+- Aspiration
+- Number of doors
+- Body style
+- Drive wheels
+- Engine location
+- Wheel base
+- Vehicle dimensions
+- Curb weight
+- Engine size
+- Engine type
+- Number of cylinders
+- Fuel system
+- Bore
+- Stroke
+- Compression ratio
+- Horsepower
+- Peak RPM
+- City MPG
+- Highway MPG
+
+---
 
 ## 🛠️ Technologies Used
 
@@ -98,15 +133,24 @@ Automobile-Price-Prediction/
 - Scikit-learn
 - Joblib
 - VS Code
-- Git & GitHub
+- Git
+- GitHub
 
-## ⚙️ Project Workflow
+---
 
-### 1. Data Collection
+# ⚙️ Project Workflow
 
-Collected the Automobile Dataset containing vehicle specifications and automobile prices.
+## 1. Data Collection
 
-### 2. Data Preprocessing
+The Automobile Dataset was collected from the UCI Machine Learning Repository.
+
+The original dataset contains **205 automobile records and 26 columns**.
+
+---
+
+## 2. Data Preprocessing
+
+The following preprocessing operations were performed:
 
 - Handled missing values.
 - Replaced missing value indicators (`?`) with appropriate missing values.
@@ -117,9 +161,25 @@ Collected the Automobile Dataset containing vehicle specifications and automobil
 - Filled missing categorical values using mode values.
 - Saved the cleaned dataset.
 
-### 3. Exploratory Data Analysis (EDA)
+Final cleaned dataset:
 
-Performed:
+```text
+dataset/cleaned_automobile.csv
+```
+
+Dataset shape after preprocessing:
+
+```text
+201 rows × 26 columns
+```
+
+---
+
+## 3. Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis was performed to understand the dataset and identify relationships between automobile features and price.
+
+The analysis included:
 
 - Univariate Analysis
 - Bivariate Analysis
@@ -128,9 +188,15 @@ Performed:
 - Feature Importance Analysis
 - Data Visualization
 
-### 4. Feature Engineering
+Several visualizations were generated and stored inside the `visuals/` directory.
 
-Created additional features to improve the representation of automobile characteristics:
+---
+
+## 4. Feature Engineering
+
+Additional features were created to improve the representation of automobile characteristics.
+
+The following engineered features were created:
 
 - `average-mpg`
 - `power-to-weight`
@@ -139,63 +205,89 @@ Created additional features to improve the representation of automobile characte
 
 The feature-engineered dataset was saved as:
 
-`dataset/feature_engineered_automobile.csv`
+```text
+dataset/feature_engineered_automobile.csv
+```
 
-### 5. Categorical Encoding
+---
 
-Categorical variables were converted into numerical form using One-Hot Encoding.
+## 5. Categorical Encoding
+
+Categorical variables were converted into numerical form using **One-Hot Encoding**.
 
 The encoded dataset was saved as:
 
-`dataset/model_ready.csv`
+```text
+dataset/model_ready.csv
+```
 
-### 6. Feature Selection
+---
 
-Feature selection was performed using correlation analysis between input features and the target variable `price`.
+## 6. Feature Selection
 
-Features with an absolute correlation of at least `0.10` were selected for model development.
+Feature selection was performed using correlation analysis between the input features and the target variable `price`.
+
+Features having an absolute correlation of at least `0.10` with the target variable were selected for model development.
 
 The selected feature dataset was saved as:
 
-`dataset/selected_features.csv`
+```text
+dataset/selected_features.csv
+```
 
-### 7. Train-Test Split
+The final model uses **46 selected input features**.
 
-The dataset was divided into training and testing sets using:
+---
+
+## 7. Train-Test Split
+
+The dataset was divided into training and testing sets using an 80:20 split.
 
 - **Training Data:** 80%
 - **Testing Data:** 20%
 - **Random State:** 42
 
-The split datasets were saved inside:
+The resulting datasets were saved inside:
 
-`dataset/split/`
+```text
+dataset/split/
+```
 
-### 8. Model Development
+---
 
-Three regression models were trained and evaluated:
+## 8. Model Development
 
-- Linear Regression
-- Decision Tree Regressor
-- Random Forest Regressor
+Three regression algorithms were trained:
 
-### 9. Model Evaluation
+1. Linear Regression
+2. Decision Tree Regressor
+3. Random Forest Regressor
 
-The models were evaluated using:
+---
+
+## 9. Model Evaluation
+
+The models were evaluated using the following regression metrics:
 
 - **Mean Absolute Error (MAE)**
 - **Root Mean Squared Error (RMSE)**
 - **R² Score**
 
-### 10. Best Model Selection
+---
+
+## 10. Best Model Selection
 
 The model comparison showed that **Linear Regression** performed the best on the test dataset based on all three evaluation metrics.
 
-The trained Linear Regression model was saved using Joblib at:
+The trained model was saved using Joblib:
 
-`models/saved_models/linear_regression_model.pkl`
+```text
+models/saved_models/linear_regression_model.pkl
+```
 
-## 📈 Model Performance
+---
+
+# 📈 Model Performance
 
 | Model | MAE | RMSE | R² Score |
 |---|---:|---:|---:|
@@ -213,18 +305,111 @@ The Linear Regression model achieved:
 
 An R² score of **0.9463** indicates that the model explains approximately **94.63% of the variation in automobile prices** on the test dataset.
 
-## 📊 Key EDA Findings
+---
+
+# 📊 Key EDA Findings
 
 - Engine size shows a strong positive correlation with automobile price.
-- Curb weight and horsepower are also strongly positively correlated with price.
+- Curb weight and horsepower are strongly positively correlated with price.
 - Vehicle width and length show positive relationships with price.
 - City MPG and highway MPG show negative correlations with price.
 - Engine size was identified as the most influential feature in the exploratory Random Forest feature importance analysis.
 - Automobile price is strongly influenced by engine specifications, vehicle dimensions, and fuel efficiency.
 
-## 🚀 Installation & Setup
+---
 
-Clone the repository:
+# 🔮 Final Price Prediction System
+
+The project includes a complete **user-input-based automobile price prediction system** implemented in `main.py`.
+
+The system uses the trained Linear Regression model to predict automobile prices based on vehicle specifications entered by the user.
+
+### The prediction system:
+
+- Loads the trained model using Joblib.
+- Accepts automobile specifications from the user.
+- Performs the required feature engineering.
+- Applies One-Hot Encoding to categorical inputs.
+- Aligns the input data with the exact features used during model training.
+- Generates the predicted automobile price.
+- Displays the estimated price in a user-friendly format.
+
+---
+
+## 🧾 Prediction Inputs
+
+The system accepts the following automobile specifications:
+
+### Numerical Inputs
+
+- Engine Size
+- Curb Weight
+- Horsepower
+- Width
+- Highway MPG
+- City MPG
+- Length
+- Wheel Base
+- Bore
+- Height
+- Peak RPM
+
+### Categorical Inputs
+
+- Make
+- Drive Wheels
+- Fuel System
+- Number of Cylinders
+- Engine Type
+- Engine Location
+- Body Style
+- Aspiration
+- Fuel Type
+
+---
+
+## ▶️ Run the Prediction System
+
+After installing the required dependencies, run:
+
+```bash
+python3 main.py
+```
+
+The program will interactively ask for the automobile specifications and then display the predicted price.
+
+Example output:
+
+```text
+==================================================
+🚗 Automobile Price Prediction System
+==================================================
+
+Predicted Automobile Price: $13,567.05
+```
+
+---
+
+# 🧪 Prediction System Validation
+
+The final prediction system was validated using an actual automobile record from the cleaned dataset.
+
+For one test automobile:
+
+| Metric | Value |
+|---|---:|
+| Actual Price | $13,495.00 |
+| Predicted Price | $14,217.35 |
+| Absolute Difference | $722.35 |
+| Percentage Error | ~5.35% |
+
+The validation demonstrates that the complete pipeline—from user input and feature engineering to encoding, model prediction, and price output—is functioning successfully.
+
+---
+
+# 🚀 Installation & Setup
+
+## Clone the Repository
 
 ```bash
 git clone https://github.com/krishjangid01/Automobile-Price-Prediction.git
@@ -236,49 +421,51 @@ Navigate to the project directory:
 cd Automobile-Price-Prediction
 ```
 
-Install dependencies:
+Install the required dependencies:
 
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn joblib
 ```
 
-### Run Data Preprocessing
+---
+
+## ▶️ Run Data Preprocessing
 
 ```bash
 python3 preprocessing/preprocessing.py
 ```
 
-### Run EDA
+## 📊 Run EDA
 
 ```bash
 python3 eda/eda.py
 ```
 
-### Run Feature Engineering
+## ⚙️ Run Feature Engineering
 
 ```bash
 python3 feature_engineering/feature_engineering.py
 ```
 
-### Run Encoding
+## 🔢 Run Encoding
 
 ```bash
 python3 encoding/encoding.py
 ```
 
-### Run Feature Selection
+## 🎯 Run Feature Selection
 
 ```bash
 python3 feature_selection/feature_selection.py
 ```
 
-### Create Train-Test Split
+## ✂️ Create Train-Test Split
 
 ```bash
 python3 models/train_test_split.py
 ```
 
-### Train Models
+## 🤖 Train Models
 
 ```bash
 python3 models/linear_regression.py
@@ -286,44 +473,55 @@ python3 models/decision_tree.py
 python3 models/random_forest.py
 ```
 
-### Compare Models
+## 📋 Compare Models
 
 ```bash
 python3 models/model_comparison.py
 ```
 
-### Save Best Model
+## 💾 Save Best Model
 
 ```bash
 python3 models/save_model.py
 ```
 
-## 📌 Project Status
+## 🔮 Run Price Prediction System
 
-### ✅ Completed
+```bash
+python3 main.py
+```
 
-- Data Collection
-- Data Preprocessing
-- Exploratory Data Analysis
-- Feature Engineering
-- Categorical Encoding
-- Feature Selection
-- Train-Test Split
-- Regression Model Development
-- Model Evaluation
-- Model Comparison
-- Best Model Selection
-- Trained Model Saving
+---
 
-### 🔄 Next Step
+# 📌 Project Status
 
-- Develop the final automobile price prediction system.
-- Integrate the saved model with `main.py`.
-- Add user input-based price prediction.
-- Perform final testing and validation.
-- Update the final project documentation.
+## ✅ Completed
 
-## 👨‍💻 Author
+- [x] Data Collection
+- [x] Data Preprocessing
+- [x] Exploratory Data Analysis
+- [x] Feature Engineering
+- [x] Categorical Encoding
+- [x] Feature Selection
+- [x] Train-Test Split
+- [x] Regression Model Development
+- [x] Model Evaluation
+- [x] Model Comparison
+- [x] Best Model Selection
+- [x] Trained Model Saving
+- [x] User Input-Based Prediction System
+- [x] Prediction Validation
+- [x] Final Project Documentation
+
+## 🎯 Final Result
+
+The complete **Automobile Price Prediction System** has been successfully developed and tested.
+
+The final system uses **Linear Regression** as the best-performing model and provides automobile price predictions based on user-provided vehicle specifications.
+
+---
+
+# 👨‍💻 Author
 
 **Krish Jangid**
 
